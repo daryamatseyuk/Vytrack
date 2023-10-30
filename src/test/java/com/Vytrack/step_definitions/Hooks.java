@@ -13,30 +13,15 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 
 import java.time.Duration;
-
-/*
-In this class we will be able to create "pre" and "post" condition
-for ALL the SCENARIOS and even STEPS.
- */
 public class Hooks {
 
-    //import the @Before coming from io.cucumber.java
     @Before (order = 1)
     public void setupMethod(){
 
-        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+        Driver.getDriver().manage().window().maximize();
 
-        Driver.getDriver().get(ConfigurationReader.getProperty("url"));
     }
-
-    //@Before (value = "@login", order = 2 )
-    public void login_scenario_before(){
-        System.out.println("---> @Before: RUNNING BEFORE EACH SCENARIO");
-    }
-
-    /*
-    @After will be executed automatically after EVERY scenario in the project.
-     */
     @After
     public void teardownMethod(Scenario scenario){
 
@@ -47,22 +32,8 @@ public class Hooks {
 
         }
 
-
-
         BrowserUtils.sleep(2);
         Driver.closeDriver();
 
     }
-
-    //@BeforeStep
-    public void setupStep(){
-        System.out.println("-----> @BeforeSTEP : Running before each step!");
-    }
-
-    //@AfterStep
-    public void teardownStep(){
-        System.out.println("-----> @AfterSTEP : Running after each step!");
-    }
-
-
 }

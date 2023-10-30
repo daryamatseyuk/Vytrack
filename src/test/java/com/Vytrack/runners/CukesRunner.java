@@ -13,9 +13,8 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "com/Vytrack/step_definitions",
-        dryRun = true,
-        tags = " @wip",
-        publish = true //generating a report with public link
+        dryRun = false,
+        tags = ""
 )
 public class CukesRunner {}
 
