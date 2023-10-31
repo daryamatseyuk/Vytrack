@@ -29,6 +29,8 @@ public class HomePage {
     @FindBy(xpath = "//*[text()='Vehicle Contracts']")
     public WebElement menu;
 
+    private By options = By.xpath("//li[contains (@class, 'dropdown-menu-single-item')]");
+
     public WebElement getModule(String moduleName) {
        WebElement expectedModule = null;
        Actions actions = new Actions(Driver.getDriver());
@@ -47,11 +49,15 @@ public class HomePage {
     }
 
     public void selectOptionFromModules(String moduleName, String optionName) {
-        getModule(moduleName);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(1));
+        List<WebElement> optionsList = getModule(moduleName).findElements(options);
         for (WebElement each : optionsList) {
-            if (each.getText().equals(optionName)) {
+            try {
+                wait.until(ExpectedConditions.textToBePresentInElement(each, optionName));
                 each.click();
                 break;
+            } catch (TimeoutException e) {
+                continue;
             }
         }
     }
