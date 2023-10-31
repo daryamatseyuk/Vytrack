@@ -13,6 +13,8 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 
+import java.util.List;
+
 public class US04_StepDefs {
 
     LoginPage loginPage= new LoginPage();
@@ -39,6 +41,11 @@ public class US04_StepDefs {
     @Then("user should see the {string} page")
     public void user_should_see_the_vehicle_contracts_page(String pageName) {
         Assert.assertTrue(vehicleContractsPage.pageTitle.contains(pageName));
+    }
+
+    @Then("user is able to see modules below")
+    public void user_is_able_to_see_modules_below(List<String> modulesNamesFleetModel) {
+
     }
 
 }
