@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
         },
         features = "src/test/resources/features",
         glue = "com/Vytrack/step_definitions",
-        dryRun = true,
+        dryRun = false,
         tags = "@wipDasha"
 )
 public class CukesRunner {}
