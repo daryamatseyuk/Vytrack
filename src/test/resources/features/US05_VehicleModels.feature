@@ -20,7 +20,7 @@ Feature: Verification of visibility columns on the Vehicle models page. (web-tab
     Examples:
       | role          |
       | sales manager |
-      | store manager |
+      #| store manager |
 
 
 

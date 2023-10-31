@@ -44,7 +44,7 @@ public class US04_StepDefs {
     }
 
     @Then("user is able to see modules below")
-    public void user_is_able_to_see_modules_below(List<String> modulesNamesFleetModel) {
+    public void user_is_able_to_see_modules_below(List<String> namesOfWebTableColumns) {
 
     }
 
