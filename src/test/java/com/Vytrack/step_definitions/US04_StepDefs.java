@@ -3,6 +3,7 @@ package com.Vytrack.step_definitions;
 import com.Vytrack.pages.HomePage;
 import com.Vytrack.pages.LoginPage;
 import com.Vytrack.pages.VehicleContractsPage;
+import com.Vytrack.pages.VehiclesModelPage;
 import com.Vytrack.utilities.BrowserUtils;
 import com.Vytrack.utilities.ConfigurationReader;
 import com.Vytrack.utilities.Driver;
@@ -12,8 +13,9 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.openqa.selenium.WebElement;
 
-import java.util.List;
+import java.util.*;
 
 public class US04_StepDefs {
 
@@ -43,9 +45,16 @@ public class US04_StepDefs {
         Assert.assertTrue(vehicleContractsPage.pageTitle.contains(pageName));
     }
 
+    VehiclesModelPage vehiclesModelPage = new VehiclesModelPage();
     @Then("user is able to see modules below")
-    public void user_is_able_to_see_modules_below(List<String> namesOfWebTableColumns) {
+    public void user_is_able_to_see_modules_below(List<String> expectedNamesOfWebTableColumns) {
+        List<String> actualNamesOfWebTableColumns = new ArrayList<>();
 
+        for (WebElement eachWebElement : vehiclesModelPage.namesWebTable) {
+            actualNamesOfWebTableColumns.add(eachWebElement.getText());
+        }
+
+        Assert.assertEquals(actualNamesOfWebTableColumns, expectedNamesOfWebTableColumns);
     }
 
 }
