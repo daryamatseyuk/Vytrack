@@ -15,7 +15,6 @@ import org.junit.runner.RunWith;
         glue = "com/Vytrack/step_definitions",
         dryRun = false,
         tags = "@wipJamil"
-
 )
 public class CukesRunner {}
 

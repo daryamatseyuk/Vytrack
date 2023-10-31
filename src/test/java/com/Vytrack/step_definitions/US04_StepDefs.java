@@ -3,19 +3,13 @@ package com.Vytrack.step_definitions;
 import com.Vytrack.pages.HomePage;
 import com.Vytrack.pages.LoginPage;
 import com.Vytrack.pages.VehicleContractsPage;
-import com.Vytrack.pages.VehiclesModelPage;
-import com.Vytrack.utilities.BrowserUtils;
 import com.Vytrack.utilities.ConfigurationReader;
 import com.Vytrack.utilities.Driver;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.junit.Before;
-import org.junit.BeforeClass;
-import org.openqa.selenium.WebElement;
 
-import java.util.*;
 
 public class US04_StepDefs {
 
@@ -37,12 +31,11 @@ public class US04_StepDefs {
     @When("user selects {string} option in {string} module")
     public void user_selects_option_in_module(String option, String module) {
        homePage.selectOptionFromModules(module, option);
-       BrowserUtils.sleep(3);
     }
 
     @Then("user should see the {string} page")
     public void user_should_see_the_vehicle_contracts_page(String pageName) {
-        Assert.assertTrue(vehicleContractsPage.pageTitle.contains(pageName));
+        Assert.assertTrue(vehicleContractsPage.getPageTitle().contains(pageName));
     }
 
 }
