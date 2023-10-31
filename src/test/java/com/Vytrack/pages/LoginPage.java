@@ -1,6 +1,7 @@
 package com.Vytrack.pages;
 
 
+import com.Vytrack.utilities.ConfigurationReader;
 import com.Vytrack.utilities.Driver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -24,7 +25,24 @@ public class LoginPage {
         userName.sendKeys(userNameStr);
         password.sendKeys(passwordStr);
         submit.click();
-        // verification that we logged
+    }
+
+    public void loginAs(String role) {
+        switch (role.toLowerCase()) {
+            case "sales manager":
+                userName.sendKeys(ConfigurationReader.getProperty("sales_manager_username"));
+                password.sendKeys(ConfigurationReader.getProperty("sales_manager_password"));
+                break;
+            case "store manager":
+                userName.sendKeys(ConfigurationReader.getProperty("store_manager_username"));
+                password.sendKeys(ConfigurationReader.getProperty("store_manager_password"));
+                break;
+            case "driver":
+                userName.sendKeys(ConfigurationReader.getProperty("driver_username"));
+                password.sendKeys(ConfigurationReader.getProperty("driver_password"));
+                break;
+        }
+        submit.click();
     }
 
 }
