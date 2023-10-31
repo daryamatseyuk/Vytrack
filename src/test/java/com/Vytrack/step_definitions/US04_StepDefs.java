@@ -33,12 +33,11 @@ public class US04_StepDefs {
     @When("user selects {string} option in {string} module")
     public void user_selects_option_in_module(String option, String module) {
        homePage.selectOptionFromModules(module, option);
-       BrowserUtils.sleep(3);
     }
 
     @Then("user should see the {string} page")
     public void user_should_see_the_vehicle_contracts_page(String pageName) {
-        Assert.assertTrue(vehicleContractsPage.pageTitle.contains(pageName));
+        Assert.assertTrue(vehicleContractsPage.getPageTitle().contains(pageName));
     }
 
 }
