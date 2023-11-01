@@ -38,4 +38,13 @@ public class US04_StepDefs {
         Assert.assertTrue(vehicleContractsPage.getPageTitle().contains(pageName));
     }
 
+    @Then("user should see {string} message")
+    public void userShouldSeeYouDoNotHavePermissionToPerformThisActionMessage(String errorMessage) {
+        Assert.assertEquals(homePage.getPermissionErrorMessage().getText(), errorMessage);
+    }
+
+    @When("user clears the error message")
+    public void userClearsTheErrorMessage() {
+        homePage.clearMessage();
+    }
 }

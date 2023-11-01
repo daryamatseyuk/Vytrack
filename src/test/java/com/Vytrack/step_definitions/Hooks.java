@@ -24,15 +24,9 @@ public class Hooks {
     }
     @After
     public void teardownMethod(Scenario scenario){
+        byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
+        scenario.attach(screenshot, "image/png", scenario.getName());
 
-        if (scenario.isFailed()) {
-
-            byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
-            scenario.attach(screenshot, "image/png", scenario.getName());
-
-        }
-
-        BrowserUtils.sleep(2);
         Driver.closeDriver();
 
     }

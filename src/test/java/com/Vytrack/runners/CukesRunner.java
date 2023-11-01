@@ -9,12 +9,13 @@ import org.junit.runner.RunWith;
         plugin = {
                 "html:target/cucumber-reports.html",
                 "rerun:target/rerun.txt",
-                "me.jvt.cucumber.report.PrettyReports:target/cucumber"
+                "me.jvt.cucumber.report.PrettyReports:target/cucumber",
+                "json:target/cucumber.json"
         },
         features = "src/test/resources/features",
         glue = "com/Vytrack/step_definitions",
         dryRun = false,
-        tags = "@wipJamil"
+        tags = "@B30G20-166"
 )
 public class CukesRunner {}
 

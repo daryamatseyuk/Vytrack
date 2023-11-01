@@ -32,12 +32,16 @@ public class HomePage {
     @FindBy(xpath = "//*[text()='Vehicle Contracts']")
     public WebElement menu;
 
-    private By options = By.xpath("//li[contains (@class, 'dropdown-menu-single-item')]");
+    @FindBy(xpath = "//div[.='You do not have permission to perform this action.']")
+    private WebElement noPermissionMessage;
+
+    @FindBy(xpath = "//div[.='You do not have permission to perform this action.']/../button")
+    private WebElement closePermissionMessageBtn;
 
     public WebElement getModule(String moduleName) {
        WebElement expectedModule = null;
        Actions actions = new Actions(Driver.getDriver());
-       WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(1));
+       WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(2));
         for (WebElement each : modulesList) {
             try {
                 wait.until(ExpectedConditions.textToBePresentInElement(each, moduleName));
@@ -52,17 +56,20 @@ public class HomePage {
     }
 
     public void selectOptionFromModules(String moduleName, String optionName) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(1));
-        List<WebElement> optionsList = getModule(moduleName).findElements(options);
-        for (WebElement each : optionsList) {
-            try {
-                wait.until(ExpectedConditions.textToBePresentInElement(each, optionName));
-                each.click();
-                break;
-            } catch (TimeoutException e) {
-                continue;
-            }
+        getModule(moduleName);
+        String optionFormat = "//span[.='%s']";
+        Driver.getDriver().findElement(By.xpath(String.format(optionFormat, optionName))).click();
+    }
+
+    public void clearMessage() {
+        if (noPermissionMessage.isDisplayed()) {
+            closePermissionMessageBtn.click();
         }
+    }
+
+    public WebElement getPermissionErrorMessage() {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(5));
+        return wait.until(ExpectedConditions.visibilityOf(noPermissionMessage));
     }
 
 
