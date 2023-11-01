@@ -49,17 +49,9 @@ public class HomePage {
     }
 
     public void selectOptionFromModules(String moduleName, String optionName) {
-        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(1));
-        List<WebElement> optionsList = getModule(moduleName).findElements(options);
-        for (WebElement each : optionsList) {
-            try {
-                wait.until(ExpectedConditions.textToBePresentInElement(each, optionName));
-                each.click();
-                break;
-            } catch (TimeoutException e) {
-                continue;
-            }
-        }
+        getModule(moduleName);
+        String optionFormat = "//span[.='%s']";
+        Driver.getDriver().findElement(By.xpath(String.format(optionFormat, optionName))).click();
     }
 
 
