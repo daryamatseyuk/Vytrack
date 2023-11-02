@@ -38,15 +38,20 @@ public class US12_StepDefs {
     @Then("user is able to see below filters")
     public void user_is_able_to_see_below_filters(List<String> expectedFilters) {
 
-       List<WebElement> actualFilters = accountPage.allFilters;
-       List<String> filters = new ArrayList<>();
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
 
-       for (WebElement each: actualFilters){
-           WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
-           wait.until(ExpectedConditions.visibilityOf(each));
-           filters.add(each.getText());
+        wait.until(ExpectedConditions.elementToBeClickable(accountPage.filterButton));
+
+        accountPage.filterButton.click();
+
+       List<String> actualFilters = new ArrayList<>();
+
+       for (WebElement each: accountPage.allFilters){
+           BrowserUtils.waitForVisibility(each,15);
+           actualFilters.add(each.getText().substring(0,each.getText().length()-5));
        }
-        System.out.println("filters = " + filters);
+
+        Assert.assertEquals(actualFilters, expectedFilters);
     }
 
 
