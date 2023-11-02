@@ -1,6 +1,5 @@
 Feature: Verification of visibility columns on the Vehicle models page. (web-table)
 
-  @wipDasha
   Scenario Outline: As a user, I want to view columns on the Vehicle models page. (web-table)
     Given user is on the login page.MD
     When user logs in as a "<role>".MD
@@ -16,7 +15,6 @@ Feature: Verification of visibility columns on the Vehicle models page. (web-tab
       | CO2 EMISSIONS            |
       | FUEL TYPE                |
       | VENDORS                  |
-
     Examples:
       | role          |
       | sales manager |

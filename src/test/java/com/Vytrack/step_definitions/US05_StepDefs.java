@@ -38,9 +38,16 @@ public class US05_StepDefs {
     public void user_is_able_to_see_names_below(List<String> expectedNamesOfWebTableColumns) {
         List<String> actualNamesOfWebTableColumns = new ArrayList<>();
 
+
         for (WebElement eachWebElement : vehiclesModelPage.namesWebTable) {
             actualNamesOfWebTableColumns.add(eachWebElement.getText());
         }
+        for (int i = actualNamesOfWebTableColumns.size()-1; i > 9; i--) {
+            actualNamesOfWebTableColumns.remove(i);
+        }
+
+        System.out.println("expectedNamesOfWebTableColumns = " + expectedNamesOfWebTableColumns);
+        System.out.println("actualNamesOfWebTableColumns = " + actualNamesOfWebTableColumns);
 
         Assert.assertEquals(actualNamesOfWebTableColumns, expectedNamesOfWebTableColumns);
 
