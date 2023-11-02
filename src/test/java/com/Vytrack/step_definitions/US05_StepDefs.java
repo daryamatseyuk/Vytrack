@@ -46,9 +46,6 @@ public class US05_StepDefs {
             actualNamesOfWebTableColumns.remove(i);
         }
 
-        System.out.println("expectedNamesOfWebTableColumns = " + expectedNamesOfWebTableColumns);
-        System.out.println("actualNamesOfWebTableColumns = " + actualNamesOfWebTableColumns);
-
         Assert.assertEquals(actualNamesOfWebTableColumns, expectedNamesOfWebTableColumns);
 
     }
