@@ -27,7 +27,7 @@ public class US05_StepDefs {
     }
     @When("user logs in as a {string}.MD")
     public void user_logs_in_as_a_md(String role) {
-        loginPage.loginAs("driver");
+        loginPage.loginAs(role);
     }
     @When("user selects {string} option in {string} module.MD")
     public void user_selects_option_in_module_md(String option, String module) {
@@ -45,9 +45,6 @@ public class US05_StepDefs {
         for (int i = actualNamesOfWebTableColumns.size()-1; i > 9; i--) {
             actualNamesOfWebTableColumns.remove(i);
         }
-
-        System.out.println("expectedNamesOfWebTableColumns = " + expectedNamesOfWebTableColumns);
-        System.out.println("actualNamesOfWebTableColumns = " + actualNamesOfWebTableColumns);
 
         Assert.assertEquals(actualNamesOfWebTableColumns, expectedNamesOfWebTableColumns);
 
