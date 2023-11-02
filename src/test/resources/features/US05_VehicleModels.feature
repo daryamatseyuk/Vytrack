@@ -21,7 +21,7 @@ Feature: Verification of visibility columns on the Vehicle models page. (web-tab
       | sales manager |
       | store manager |
 
-  @wipDasha
+
     Scenario: Drivers should not able to access the Vehicle Model page
       Given user is on the login page
       When user logs in as a "driver"
