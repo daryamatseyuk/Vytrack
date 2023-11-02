@@ -44,12 +44,12 @@ public class US12_StepDefs {
 
         accountPage.filterButton.click();
 
-       List<String> actualFilters = new ArrayList<>();
+        List<String> actualFilters = new ArrayList<>();
 
-       for (WebElement each: accountPage.allFilters){
-           BrowserUtils.waitForVisibility(each,15);
-           actualFilters.add(each.getText().substring(0,each.getText().length()-5));
-       }
+        for (WebElement each: accountPage.allFilters){
+            BrowserUtils.waitForVisibility(each,15);
+            actualFilters.add(each.getText().substring(0,each.getText().length()-5));
+        }
 
         Assert.assertEquals(actualFilters, expectedFilters);
     }
