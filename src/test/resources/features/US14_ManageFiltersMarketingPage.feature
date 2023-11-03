@@ -1,8 +1,10 @@
 
 Feature: Managing filters on the Marketing Page
 
-  Scenario Outline:
+  Background:
     Given user is on the login page. Dasha
+
+  Scenario Outline:
     When user logs in as a "<role>". Dasha
     Then user selects "Marketing" option in "Campaigns" module. Dasha
     Then user clicks on the filter button. Dasha
@@ -20,7 +22,6 @@ Feature: Managing filters on the Marketing Page
 
   @wipDasha
     Scenario Outline:
-      Given user is on the login page. Dasha
       When user logs in as a "<role>". Dasha
       Then user selects "Marketing" option in "Campaigns" module. Dasha
       Then user clicks on the filter button. Dasha

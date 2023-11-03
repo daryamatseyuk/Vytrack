@@ -63,18 +63,13 @@ public class US14_StepDefs {
     @Then("user is able to uncheck some of the boxes")
     public void user_is_able_to_uncheck_some_of_the_boxes() {
         marketingCampaignsPage.nameCheckbox.click();
-     //   WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
-     //   wait.until(ExpectedConditions.visibilityOf(marketingCampaignsPage.budgetCheckbox));
-     //   marketingCampaignsPage.budgetCheckbox.click();
-     //   marketingCampaignsPage.codeCheckbox.click();
-     //   BrowserUtils.sleep(3);
-        clickOn(By.id("ui-multiselect-0-0-option-1"), Driver.getDriver());
-        BrowserUtils.sleep(2);
-        clickOn(By.id("ui-multiselect-0-0-option-4"), Driver.getDriver());
-      //  clickOn(By.xpath("(//input[@name='multiselect_0'])[5]"), Driver.getDriver());
+        BrowserUtils.waitForClickablility(By.id("ui-multiselect-0-0-option-1"),10);
+        marketingCampaignsPage.codeCheckbox.click();
+        BrowserUtils.waitForClickablility(By.id("ui-multiselect-0-0-option-4"), 10);
+        marketingCampaignsPage.budgetCheckbox.click();
         Assert.assertFalse(marketingCampaignsPage.nameCheckbox.isSelected());
-        Assert.assertFalse(marketingCampaignsPage.budgetCheckbox.isSelected());
         Assert.assertFalse(marketingCampaignsPage.codeCheckbox.isSelected());
+        Assert.assertFalse(marketingCampaignsPage.budgetCheckbox.isSelected());
     }
 
 
