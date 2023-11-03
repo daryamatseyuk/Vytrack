@@ -10,8 +10,13 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +25,13 @@ public class US14_StepDefs {
     LoginPage loginPage = new LoginPage();
     HomePage homePage = new HomePage();
     MarketingCampaignsPage marketingCampaignsPage = new MarketingCampaignsPage();
+    public void clickOn(By locator, WebDriver driver)
+    {
+        final WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.refreshed(
+                ExpectedConditions.elementToBeClickable(locator)));
+        driver.findElement(locator).click();
+    }
 
     @Given("user is on the login page. Dasha")
     public void user_is_on_the_login_page_dasha() {
@@ -50,12 +62,17 @@ public class US14_StepDefs {
     }
     @Then("user is able to uncheck some of the boxes")
     public void user_is_able_to_uncheck_some_of_the_boxes() {
-        BrowserUtils.sleep(3);
         marketingCampaignsPage.nameCheckbox.click();
-      //  marketingCampaignsPage.budgetCheckbox.click();
-        marketingCampaignsPage.codeCheckbox.click();
+     //   WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+     //   wait.until(ExpectedConditions.visibilityOf(marketingCampaignsPage.budgetCheckbox));
+     //   marketingCampaignsPage.budgetCheckbox.click();
+     //   marketingCampaignsPage.codeCheckbox.click();
+     //   BrowserUtils.sleep(3);
+        clickOn(By.xpath("(//input[@name='multiselect_0'])[2]"), Driver.getDriver());
+        BrowserUtils.sleep(2);
+        clickOn(By.xpath("(//input[@name='multiselect_0'])[5]"), Driver.getDriver());
         Assert.assertFalse(marketingCampaignsPage.nameCheckbox.isSelected());
-     //   Assert.assertFalse(marketingCampaignsPage.budgetCheckbox.isSelected());
+        Assert.assertFalse(marketingCampaignsPage.budgetCheckbox.isSelected());
         Assert.assertFalse(marketingCampaignsPage.codeCheckbox.isSelected());
     }
 
