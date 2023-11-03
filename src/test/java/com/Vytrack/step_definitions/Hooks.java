@@ -17,17 +17,13 @@ public class Hooks {
 
     @Before (order = 1)
     public void setupMethod(){
-
         Driver.getDriver().manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         Driver.getDriver().manage().window().maximize();
-
     }
     @After
     public void teardownMethod(Scenario scenario){
         byte[] screenshot = ((TakesScreenshot) Driver.getDriver()).getScreenshotAs(OutputType.BYTES);
         scenario.attach(screenshot, "image/png", scenario.getName());
-
         Driver.closeDriver();
-
     }
 }

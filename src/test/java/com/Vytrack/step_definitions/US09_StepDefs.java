@@ -11,6 +11,8 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.hamcrest.core.Every;
 import org.junit.Assert;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.devtools.idealized.Events;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -39,6 +41,7 @@ public class US09_StepDefs {
     }
     @When("User clicks on Create Calendar Event button")
     public void user_clicks_on() {
+        BrowserUtils.sleep(2);
         wait.until(ExpectedConditions.elementToBeClickable(cp.createCalendarEvent));
         cp.createCalendarEvent.click();
     }
