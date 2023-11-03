@@ -13,6 +13,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 import java.util.List;
+import java.util.Set;
 
 public class HomePage {
 
@@ -29,8 +30,8 @@ public class HomePage {
     @FindBy(xpath = "//ul[@class='dropdown-menu dropdown-menu-level-1 menu menu-level-1']")
     private List<WebElement> optionsList;
 
-    @FindBy(xpath = "//*[text()='Vehicle Contracts']")
-    public WebElement menu;
+    @FindBy(xpath = "//i[@class='fa-question-circle']")
+    public WebElement questionMarkBtn;
 
     @FindBy(xpath = "//div[.='You do not have permission to perform this action.']")
     private WebElement noPermissionMessage;
@@ -72,5 +73,19 @@ public class HomePage {
         return wait.until(ExpectedConditions.visibilityOf(noPermissionMessage));
     }
 
+    public String getOraDocURL(){
+
+        String windowID = Driver.getDriver().getWindowHandle();
+        Set<String> allWindowID = Driver.getDriver().getWindowHandles();
+
+        for (String eachID: allWindowID) {
+            if(!eachID.equals(windowID)){
+                Driver.getDriver().switchTo().window(eachID);
+            }
+        }
+
+        return Driver.getDriver().getCurrentUrl();
+
+    }
 
 }
