@@ -1,3 +1,4 @@
+
 Feature: Managing filters on the Marketing Page
 
   Scenario Outline:
@@ -17,7 +18,7 @@ Feature: Managing filters on the Marketing Page
       | sales manager |
       | store manager |
 
-
+  @wipDasha
     Scenario Outline:
       Given user is on the login page. Dasha
       When user logs in as a "<role>". Dasha
@@ -27,6 +28,6 @@ Feature: Managing filters on the Marketing Page
       Then user is able to uncheck some of the boxes
       Examples:
         | role          |
-        #| sales manager |
+        | sales manager |
         | store manager |
 
