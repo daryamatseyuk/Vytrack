@@ -48,6 +48,16 @@ public class US14_StepDefs {
             Assert.assertTrue(eachWebElement.isSelected());
         }
     }
+    @Then("user is able to uncheck some of the boxes")
+    public void user_is_able_to_uncheck_some_of_the_boxes() {
+        BrowserUtils.sleep(3);
+        marketingCampaignsPage.nameCheckbox.click();
+      //  marketingCampaignsPage.budgetCheckbox.click();
+        marketingCampaignsPage.codeCheckbox.click();
+        Assert.assertFalse(marketingCampaignsPage.nameCheckbox.isSelected());
+     //   Assert.assertFalse(marketingCampaignsPage.budgetCheckbox.isSelected());
+        Assert.assertFalse(marketingCampaignsPage.codeCheckbox.isSelected());
+    }
 
 
 

@@ -17,5 +17,15 @@ public class MarketingCampaignsPage {
     public WebElement manageFiltersDropdown;
     @FindBy(xpath = "//input[@name='multiselect_3']")
     public List<WebElement> optionFromDropdown;
+    @FindBy(xpath = "//input[@title='Name']")
+    public WebElement nameCheckbox;
+    @FindBy(xpath = "//input[@value='code']")
+    public WebElement codeCheckbox;
+    @FindBy(xpath = "//input[@title='Start Date']")
+    public WebElement startDateCheckbox;
+    @FindBy(xpath = "//input[@title='End Date']")
+    public WebElement endDateCheckbox;
+    @FindBy(xpath = "(//input[@name='multiselect_3'])[5]")
+    public WebElement budgetCheckbox;
 
 }
