@@ -17,15 +17,15 @@ public class MarketingCampaignsPage {
     public WebElement manageFiltersDropdown;
     @FindBy(xpath = "//input[@name='multiselect_3']")
     public List<WebElement> optionFromDropdown;
-    @FindBy(xpath = "//input[@title='Name']")
+    @FindBy(id = "ui-multiselect-0-0-option-0")
     public WebElement nameCheckbox;
-    @FindBy(xpath = "(//input[@name='multiselect_0'])[2]")
+    @FindBy(id = "ui-multiselect-0-0-option-1")
     public WebElement codeCheckbox;
     @FindBy(xpath = "//input[@title='Start Date']")
     public WebElement startDateCheckbox;
     @FindBy(xpath = "//input[@title='End Date']")
     public WebElement endDateCheckbox;
-    @FindBy(xpath = "(//input[@name='multiselect_0'])[5]")
+    @FindBy(id = "ui-multiselect-0-0-option-4")
     public WebElement budgetCheckbox;
 
 }
