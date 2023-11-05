@@ -14,35 +14,35 @@ public class LoginPage {
     }
 
     @FindBy(id="prependedInput")
-    public WebElement userName;
+    public WebElement userNameInputBox;
     @FindBy(id="prependedInput2")
-    public WebElement password;
+    public WebElement passwordInputBox;
     @FindBy(name = "_submit")
-    public WebElement submit;
+    public WebElement loginButton;
 
 
     public void login(String userNameStr, String passwordStr) {
-        userName.sendKeys(userNameStr);
-        password.sendKeys(passwordStr);
-        submit.click();
+        userNameInputBox.sendKeys(userNameStr);
+        passwordInputBox.sendKeys(passwordStr);
+        loginButton.click();
     }
 
     public void loginAs(String role) {
         switch (role.toLowerCase()) {
             case "sales manager":
-                userName.sendKeys(ConfigurationReader.getProperty("sales_manager_username"));
-                password.sendKeys(ConfigurationReader.getProperty("sales_manager_password"));
+                userNameInputBox.sendKeys(ConfigurationReader.getProperty("sales_manager_username"));
+                passwordInputBox.sendKeys(ConfigurationReader.getProperty("sales_manager_password"));
                 break;
             case "store manager":
-                userName.sendKeys(ConfigurationReader.getProperty("store_manager_username"));
-                password.sendKeys(ConfigurationReader.getProperty("store_manager_password"));
+                userNameInputBox.sendKeys(ConfigurationReader.getProperty("store_manager_username"));
+                passwordInputBox.sendKeys(ConfigurationReader.getProperty("store_manager_password"));
                 break;
             case "driver":
-                userName.sendKeys(ConfigurationReader.getProperty("driver_username"));
-                password.sendKeys(ConfigurationReader.getProperty("driver_password"));
+                userNameInputBox.sendKeys(ConfigurationReader.getProperty("driver_username"));
+                passwordInputBox.sendKeys(ConfigurationReader.getProperty("driver_password"));
                 break;
         }
-        submit.click();
+        loginButton.click();
     }
 
 }
