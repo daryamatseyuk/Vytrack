@@ -4,6 +4,7 @@ Feature: As a user, I want to learn how to use the pinbar.
   Scenario Outline: when users click the “Learn how to use this space” link on the homepage, users should see:
   #“How To Use Pinbar”  and
   #“Use the pin icon on the right top corner of the page to create fast access link in the pinbar.”
+    #“Use the pin icon on the right top corner of the page to create fast access link in the pinbar.”
     Given User is logged in as "<role>"
     When User clicks on Learn how to use this space button
     And User clicks on Pin-Unpin the page button
