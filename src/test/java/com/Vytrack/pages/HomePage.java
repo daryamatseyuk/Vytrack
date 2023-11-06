@@ -62,6 +62,25 @@ public class HomePage {
         Driver.getDriver().findElement(By.xpath(String.format(optionFormat, optionName))).click();
     }
 
+    public void getModule_Modified(String moduleName) {
+        Actions actions = new Actions(Driver.getDriver());
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(15));
+        wait.until(ExpectedConditions.visibilityOfAllElements(allTopModules));
+        for (WebElement eachModule : allTopModules) {
+            if (eachModule.getText().equals(moduleName)) {
+                actions.moveToElement(eachModule).perform();
+                break;
+            }
+        }
+    }
+
+    public void selectOptionFromModule_Modified(String moduleName, String optionName) {
+        getModule_Modified(moduleName);
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(By.xpath(String.format("//span[.='%s']", optionName)))).click();
+    }
+
+
     public void clearMessage() {
         if (noPermissionMessage.isDisplayed()) {
             closePermissionMessageBtn.click();

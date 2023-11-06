@@ -30,7 +30,7 @@ public class US04_StepDefs {
 
     @When("user selects {string} option in {string} module")
     public void user_selects_option_in_module(String option, String module) {
-       homePage.selectOptionFromModules(module, option);
+       homePage.selectOptionFromModule_Modified(module, option);
     }
 
     @Then("user should see the {string} page")
